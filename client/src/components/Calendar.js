@@ -4,25 +4,25 @@ import "react-datepicker/dist/react-datepicker.css";
 
 export default class Calendar extends Component {
   state = {
-    startDate: new Date()
+    selectedDate: new Date()
   };
 
   handleChange = date => {
     this.setState({
-      startDate: date
+      selectedDate: date
     });
   };
 
   render() {
     return (
       <DatePicker
-        selected={this.state.startDate}
+        selected={this.state.selectedDate}
         onChange={this.handleChange}
         openToDate={new Date()}
         showTimeSelect
         shouldCloseOnSelect={false}
         inline
-      />
+/>
     );
   }
 }
