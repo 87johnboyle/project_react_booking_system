@@ -22,11 +22,11 @@ public class Booking {
     private String email;
 
     @Column(name = "telephone")
-    private int telephone;
+    private String telephone;
 
     //Constructor
 
-    public Booking (String firstName, String lastName, String email, int telephone) {
+    public Booking (String firstName, String lastName, String email, String telephone) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -72,11 +72,11 @@ public class Booking {
         this.email = email;
     }
 
-    public int getTelephone() {
+    public String getTelephone() {
         return telephone;
     }
 
-    public void setTelephone(int telephone) {
+    public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
 

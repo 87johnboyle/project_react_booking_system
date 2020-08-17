@@ -10,6 +10,9 @@ import com.JB.example.CovidBackEnd.BookingRepository;
 import java.util.List;
 import java.util.Optional;
 
+@RestController
+@RequestMapping
+
 public class BookingController {
 
     @Autowired
@@ -28,13 +31,13 @@ public class BookingController {
     @PostMapping(value = "/bookings")
     public ResponseEntity createBooking(@RequestBody Booking booking){
         bookingRepository.save(booking);
-        return new ResponseEntity<>(booking, HttpStatus.CREATED);
+        return new ResponseEntity<>("Booking Confirmed", HttpStatus.CREATED);
     }
 
     @DeleteMapping(value = "/bookings/{id}")
     public ResponseEntity<Optional<Booking>> deleteBooking(@PathVariable Long id){
         bookingRepository.deleteById(id);
-        return new ResponseEntity(bookingRepository.findAll(), HttpStatus.OK);
+        return new ResponseEntity("Booking Deleted", HttpStatus.OK);
     }
 
 }

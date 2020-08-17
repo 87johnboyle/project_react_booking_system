@@ -1,12 +1,13 @@
 import React, { Component } from "react";
+import axios from "axios"
 
 export default class Form extends Component{
 
   constructor(props) {
     super(props);
     this.state = {
-      firstname: '',
-      lastname: '',
+      firstName: '',
+      lastName: '',
       email:'',
       telephone:'',
 
@@ -20,13 +21,13 @@ export default class Form extends Component{
 
   handleFirstNameChange(event) {
     this.setState({
-      firstname: event.target.value
+      firstName: event.target.value
     });
   }
 
   handleLastNameChange(event){
     this.setState({
-      lastname: event.target.value
+      lastName: event.target.value
     });
   }
 
@@ -42,47 +43,55 @@ export default class Form extends Component{
     });
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-    const firstname = this.state.firstname.trim();
-    const lastname = this.state.lastname.trim();
-    const email = this.state.email.trim();
-    const telephone = this.state.telephone.trim();
-    if (!firstname || !lastname || !email || !telephone){
-      return;
-    }
-
-    this.props.onCommentSubmit({
-      firstname: firstname,
-      lastname: lastname,
-      email: email,
-      telephone: telephone
-      });
-
+  handleDateChange(event) {
     this.setState({
-      firstname: firstname,
-      lastname: lastname,
-      email: email,
-      telephone: telephone
+      selectedDate: event.target.value
     });
   }
+
+  handleSubmit(event) {
+         event.preventDefault();
+         const data = {
+           firstName : this.state.firstName,
+           lastName : this.state.lastName,
+           email : this.state.email,
+           telephone : this.state.telephone
+           };
+         axios({
+           method: "post",
+           url: `http://localhost:8080/bookings`,
+           data: data
+         })
+           .then(res => {
+             this.setState({
+               firstName: '',
+               lastName: '',
+               email:'',
+               telephone:''
+             });
+           })
+           .catch(err => {
+             console.log(err);
+           });
+       }
 
   render(){
 
     return(
       <form className="showHideForm" onSubmit={this.handleSubmit}>
-      <input type="text" value={this.state.firstname} placeholder="Enter First Name" onChange={this.handleFirstNameChange}/>
+      <input type="text" value={this.state.firstName} placeholder="Enter First Name" required onChange={this.handleFirstNameChange}/>
       <br/>
       <br/>
-      <input type="text" value={this.state.lastname}  placeholder="Enter Last Name" onChange={this.handleLastNameChange}/>
+      <input type="text" value={this.state.lastName}  placeholder="Enter Last Name" required onChange={this.handleLastNameChange}/>
       <br/>
       <br/>
-      <input type="text" value={this.state.email}  placeholder="Enter Email" onChange={this.handleEmailChange}/>
+      <input type="text" value={this.state.email}  placeholder="Enter Email" required onChange={this.handleEmailChange}/>
       <br/>
       <br/>
-      <input type="text" value={this.state.telephone}  placeholder="Enter Last Name" onChange={this.handleTelephoneChange}/>
+      <input type="tel" value={this.state.telephone}  placeholder="Enter Telephone" required onChange={this.handleTelephoneChange}/>
       <br/>
       <br/>
+      <input type="text" value={this.state.selectedDate}  placeholder="Enter Date" required onChange={this.handleDateChange}/>
       <input type="submit" value="Post"/>
       </form>
     )
