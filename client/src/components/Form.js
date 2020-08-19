@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import axios from "axios"
+import axios from "axios";
+import moment from 'moment'
 
 export default class Form extends Component{
 
@@ -50,7 +51,8 @@ export default class Form extends Component{
            lastName : this.state.lastName,
            email : this.state.email,
            telephone : this.state.telephone,
-           selectedDate: this.props.date
+           selectedDate: moment(this.props.date).format('DD/MM/YYYY'),
+           selectedTime: moment(this.props.time).format('LT')
 
            };
          axios({

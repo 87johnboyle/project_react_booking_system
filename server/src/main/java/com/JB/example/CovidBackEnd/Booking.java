@@ -27,14 +27,18 @@ public class Booking {
     @Column(name = "selected_date")
     private String selectedDate;
 
+    @Column(name ="selected_time")
+    private String selectedTime;
+
     //Constructor
 
-    public Booking (String firstName, String lastName, String email, String telephone, String selectedDate) {
+    public Booking (String firstName, String lastName, String email, String telephone, String selectedDate, String selectedTime) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.telephone = telephone;
         this.selectedDate = selectedDate;
+        this.selectedTime = selectedTime;
     }
 
     //default
@@ -90,6 +94,14 @@ public class Booking {
 
     public void setSelectedDate(String selectedDate) {
         this.selectedDate = selectedDate;
+    }
+
+    public String getSelectedTime(){
+        return selectedTime;
+    }
+
+    public void setSelectedTime(String selectedTime) {
+        this.selectedTime = selectedTime;
     }
 
 }

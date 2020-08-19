@@ -7,12 +7,14 @@ import "react-datepicker/dist/react-datepicker.css";
 class BookingSystem extends Component {
 
   state = {
-    selectedDate: new Date()
+    selectedDate: new Date(),
+    selectedTime: new Date()
   };
 
   handleChange = date => {
     this.setState({
-      selectedDate: date
+      selectedDate: date,
+      selectedTime: date
     });
   };
 
@@ -27,7 +29,7 @@ class BookingSystem extends Component {
         shouldCloseOnSelect={false}
         inline
 />
-      <Form date={this.state.selectedDate}/>
+      <Form date={this.state.selectedDate} time={this.state.selectedTime}/>
       </div>
     )
   }
