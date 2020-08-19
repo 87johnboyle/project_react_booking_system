@@ -15,7 +15,7 @@ public class DataLoader  implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) {
-        Booking booking1 = new Booking("John", "Boyle", "jb@email.com", "121122");
+        Booking booking1 = new Booking("John", "Boyle", "jb@email.com", "121122", "Mon Aug 17 2020 11:02:21 GMT+0100 (British Summer Time)");
         BookingRepository.save(booking1);
 
     }

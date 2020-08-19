@@ -9,7 +9,7 @@ export default class Form extends Component{
       firstName: '',
       lastName: '',
       email:'',
-      telephone:'',
+      telephone:''
 
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -43,19 +43,15 @@ export default class Form extends Component{
     });
   }
 
-  handleDateChange(event) {
-    this.setState({
-      selectedDate: event.target.value
-    });
-  }
-
   handleSubmit(event) {
          event.preventDefault();
          const data = {
            firstName : this.state.firstName,
            lastName : this.state.lastName,
            email : this.state.email,
-           telephone : this.state.telephone
+           telephone : this.state.telephone,
+           selectedDate: this.props.date
+
            };
          axios({
            method: "post",
@@ -68,6 +64,7 @@ export default class Form extends Component{
                lastName: '',
                email:'',
                telephone:''
+
              });
            })
            .catch(err => {
@@ -91,7 +88,6 @@ export default class Form extends Component{
       <input type="tel" value={this.state.telephone}  placeholder="Enter Telephone" required onChange={this.handleTelephoneChange}/>
       <br/>
       <br/>
-      <input type="text" value={this.state.selectedDate}  placeholder="Enter Date" required onChange={this.handleDateChange}/>
       <input type="submit" value="Post"/>
       </form>
     )
