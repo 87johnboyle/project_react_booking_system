@@ -1,9 +1,9 @@
 import React from 'react';
-import BookingSystem from './containers/BookingSystem.js'
+import Calendar from './containers/Calendar.js'
 
 function App() {
   return (
-    <BookingSystem />
+    <Calendar />
   );
 }
 

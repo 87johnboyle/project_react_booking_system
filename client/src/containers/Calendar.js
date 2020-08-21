@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import moment from 'moment';
 
 
-class BookingSystem extends Component {
+class Calendar extends Component {
 
   state = {
     selectedDate: new Date(),
@@ -38,4 +38,4 @@ class BookingSystem extends Component {
   }
 }
 
-export default BookingSystem
+export default Calendar
