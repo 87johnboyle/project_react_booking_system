@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Form from '../components/Form';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import moment from 'moment';
 
 
 class BookingSystem extends Component {
@@ -25,6 +26,8 @@ class BookingSystem extends Component {
         selected={this.state.selectedDate}
         onChange={this.handleChange}
         openToDate={new Date()}
+        minDate={moment().toDate()}
+        timeIntervals={60}
         showTimeSelect
         shouldCloseOnSelect={false}
         inline
